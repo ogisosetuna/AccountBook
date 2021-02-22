@@ -25,9 +25,12 @@ public class DBOpenHelper extends SQLiteOpenHelper {
      * db = getReadableDatabase();
      */
     public DBOpenHelper(Context context){
-        super(context,"db_test",null,1);
+        super(context,"User_Database.db",null,1);
         db = getReadableDatabase();
     }
+
+
+
 
     /**
      * 重写两个必须要重写的方法，因为class DBOpenHelper extends SQLiteOpenHelper
@@ -52,7 +55,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
     }
     /**
      * 接下来写自定义的增删改查方法
-     * 这些方法，写在这里归写在这里，以后不一定都用
+     * 这些方法，写在这里，以后不一定都用
      * add()
      * delete()
      * update()

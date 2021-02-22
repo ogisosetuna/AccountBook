@@ -21,7 +21,7 @@ public class Code {
      *                字母 c C 和 G
      *                字母 t （经常和随机线混在一起看不清）
      */
-    private static final char[] CHARS = {
+    private static final char[] CHARS = {'1',
             '2', '3', '4', '5',  '7', '8',
             'a',  'd', 'e', 'f', 'g', 'h', 'j', 'k', 'm',
             'n', 'p',  'r', 's',  'u', 'v', 'w', 'x', 'y', 'z',

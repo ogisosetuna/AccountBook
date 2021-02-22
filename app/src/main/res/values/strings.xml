@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AccountBook</string>
+    <string name="detail_tab">明细</string>
+
+    <string name="detail_tab1">明细1</string>
+    <string name="detail_tab2">明细2</string>
+    <string name="category_report_tab">类别报表</string>
 </resources>
