@@ -110,7 +110,7 @@ public class OneFragment extends Fragment {
             DBOpenHelper helper = new DBOpenHelper(getActivity(),"qianbao.db",null,1);
             SQLiteDatabase db = helper.getWritableDatabase();
 
-            Cursor c = db.query("basicCode_tb",null,"userID=?",new String[]{name},null,null,null);
+            Cursor c = db.query("basicCode_tb",null,"name=?",new String[]{name},null,null,null);
             c.moveToFirst();
             int iColCount = c.getColumnCount();
             int iNumber = 0;
