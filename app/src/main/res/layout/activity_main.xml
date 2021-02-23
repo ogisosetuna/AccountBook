@@ -44,6 +44,16 @@
 <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <Button
+        android:id="@+id/sym_det"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="明细"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/bt_main_logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

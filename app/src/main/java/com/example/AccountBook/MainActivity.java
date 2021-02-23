@@ -28,14 +28,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initView() {
         // 初始化控件对象
         Button mBtMainLogout = findViewById(R.id.bt_main_logout);
+        Button mBtMainDetail = findViewById(R.id.sym_det);
         // 绑定点击监听器
         mBtMainLogout.setOnClickListener(this);
+        mBtMainDetail.setOnClickListener(this);
     }
 
     public void onClick(View view) {
         if (view.getId() == R.id.bt_main_logout) {
-            Intent intent = new Intent(this, loginActivity.class);
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
+            finish();
+        }
+        if (view.getId() == R.id.sym_det){
+            Intent intent1 = new Intent(this, Detail.class);
+            startActivity(intent1);
             finish();
         }
     }

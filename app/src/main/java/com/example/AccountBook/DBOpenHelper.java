@@ -24,9 +24,13 @@ public class DBOpenHelper extends SQLiteOpenHelper {
      * 不过，以现如今的内存容量，估计一辈子也见不到几次内存占满的状态
      * db = getReadableDatabase();
      */
-    public DBOpenHelper(Context context){
-        super(context,"User_Database.db",null,1);
-        db = getReadableDatabase();
+//    public DBOpenHelper(Context context){
+//        super(context,"User_Database.db",null,1);
+//        db = getReadableDatabase();
+//    }
+    public DBOpenHelper(Context context,String name, SQLiteDatabase.CursorFactory factory,
+                        int version){
+        super(context, name, factory, version);
     }
 
 
@@ -43,10 +47,33 @@ public class DBOpenHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db){
-        db.execSQL("CREATE TABLE IF NOT EXISTS user(" +
-                "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "name TEXT," +
-                "password TEXT)");
+//        db.execSQL("CREATE TABLE IF NOT EXISTS user(" +
+//                "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+//                "name TEXT," +
+//                "password TEXT)");
+
+        //user table
+        db.execSQL("create table if not exists user_tb(_id integer primary key autoincrement," +
+                "name text not null," +
+                "password text not null)");
+
+//        Configuration table
+        db.execSQL("create table if not exists refCode_tb(_id integer primary key autoincrement," +
+                "CodeType text not null," +
+                "CodeID text not null," +
+                "CodeName text not null)");
+
+        //costDetail_tb
+        db.execSQL("create table if not exists basicCode_tb(_id integer primary key autoincrement," +
+                "name text not null," +
+                "Type integer not null," +
+                "incomeWay text not null," +
+                "incomeBy text not null," +
+                "category text not null," +
+                "item text not null," +
+                "cost money not null," +
+                "note text not null," +
+                "makeDate text not null)");
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){

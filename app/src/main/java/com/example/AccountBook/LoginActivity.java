@@ -5,9 +5,15 @@ package com.example.AccountBook;
  * 不多吧？
  */
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,13 +34,14 @@ import java.util.ArrayList;
  * 就可以把onClick事件写到onCreate()方法之外
  * 这样，onCreate()方法中的代码就不会显得很冗余
  */
-public class loginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     /**
      * 声明自己写的 DBOpenHelper 对象
      * DBOpenHelper(extends SQLiteOpenHelper) 主要用来
      * 创建数据表
      * 然后再进行数据表的增、删、改、查操作
      */
+    private long firstTime=0;
     private DBOpenHelper mDBOpenHelper;
     private TextView mTvLoginactivityRegister;
     private RelativeLayout mRlLoginactivityTop;
@@ -61,7 +68,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
 
         initView();
 
-        mDBOpenHelper = new DBOpenHelper(this);
+
     }
 
     /**
@@ -110,35 +117,83 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
              *  finish();//销毁此Activity
              */
             case R.id.bt_loginactivity_login:
-                String name = mEtLoginactivityUsername.getText().toString().trim();
-                String password = mEtLoginactivityPassword.getText().toString().trim();
-                if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(password)) {
-                    ArrayList<User> data = mDBOpenHelper.getAllData();
-                    boolean match = false;
-                    for (int i = 0; i < data.size(); i++) {
-                        User user = data.get(i);
-                        if (name.equals(user.getName()) && password.equals(user.getPassword())) {
-                            match = true;
-                            break;
-                        } else {
-                            match = false;
+                String name = mEtLoginactivityUsername.getText().toString();
+                String password = mEtLoginactivityPassword.getText().toString();
+                mDBOpenHelper = new DBOpenHelper(this,"qianbao.db",null,1);
+                SQLiteDatabase db = mDBOpenHelper.getWritableDatabase();
+                Cursor c = db.query("user_tb",null,"name=? and password=?",new String[]{name,password},null,null,null);
+
+                if(c!=null && c.getCount() >= 1) {
+                    String[] cols = c.getColumnNames();
+                    while (c.moveToNext()) {
+                        for (String ColumnName : cols) {
+                            Log.i("info", ColumnName + ":" + c.getString(c.getColumnIndex(ColumnName)));
                         }
                     }
-                    if (match) {
-                        Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(this, MainActivity.class);
-                        startActivity(intent);
-                        finish();//销毁此Activity
-                    } else {
-                        Toast.makeText(this, "用户名或密码不正确，请重新输入", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(this, "请输入你的用户名或密码", Toast.LENGTH_SHORT).show();
+                    c.close();
+                    db.close();
+                    //将登陆用户信息存储到SharedPreferences中
+                    SharedPreferences mySharedPreferences= getSharedPreferences("setting", Activity.MODE_PRIVATE); //实例化SharedPreferences对象
+                    SharedPreferences.Editor editor = mySharedPreferences.edit();//实例化SharedPreferences.Editor对象
+                    editor.putString("name", name); //用putString的方法保存数据
+                    editor.commit(); //提交当前数据
+
+                    Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+                    this.finish();
                 }
-                break;
+                else {
+                    Toast.makeText(this, "用户名或密码输入错误！", Toast.LENGTH_SHORT).show();
+                }
+
+//                if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(password)) {
+//                    ArrayList<User> data = mDBOpenHelper.getAllData();
+//                    boolean match = false;
+//                    for (int i = 0; i < data.size(); i++) {
+//                        User user = data.get(i);
+//                        if (name.equals(user.getName()) && password.equals(user.getPassword())) {
+//                            match = true;
+//                            break;
+//                        } else {
+//                            match = false;
+//                        }
+//                    }
+//                    if (match) {
+//                        Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+//                        Intent intent = new Intent(this, MainActivity.class);
+//                        startActivity(intent);
+//                        finish();//销毁此Activity
+//                    } else {
+//                        Toast.makeText(this, "用户名或密码不正确，请重新输入", Toast.LENGTH_SHORT).show();
+//                    }
+//                } else {
+//                    Toast.makeText(this, "请输入你的用户名或密码", Toast.LENGTH_SHORT).show();
+//                }
+//                break;
         }
     }
-}
+
+
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK://点击返回键
+                long secondTime = System.currentTimeMillis();//以毫秒为单位
+                if (secondTime - firstTime > 2000) {
+                    Toast.makeText(this, "再按一次返回退出程序", Toast.LENGTH_SHORT).show();
+                    firstTime = secondTime;
+                } else {
+                    finish();
+                    System.exit(0);
+                }
+                return true;
+        }
+        return super.onKeyUp(keyCode, event);
+    }
+
+    }
 
 
 

@@ -1,6 +1,8 @@
 package com.example.AccountBook;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -42,7 +44,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         initView();
 
-        mDBOpenHelper = new DBOpenHelper(this);
 
         //将验证码用图片的形式显示出来
         mIvRegisteractivityShowcode.setImageBitmap(Code.getInstance().createBitmap());
@@ -73,7 +74,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_registeractivity_back: //返回登录页面
-                Intent intent1 = new Intent(this, loginActivity.class);
+                Intent intent1 = new Intent(this, LoginActivity.class);
                 startActivity(intent1);
                 finish();
                 break;
@@ -86,11 +87,19 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 String username = mEtRegisteractivityUsername.getText().toString().trim();
                 String password = mEtRegisteractivityPassword2.getText().toString().trim();
                 String phoneCode = mEtRegisteractivityPhonecodes.getText().toString().toLowerCase();
+                mDBOpenHelper = new DBOpenHelper(this,"qianbao.db",null,1);
+                SQLiteDatabase db = mDBOpenHelper.getWritableDatabase();
                 //注册验证
                 if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(phoneCode) ) {
                     if (phoneCode.equals(realCode)) {
                         //将用户名和密码加入到数据库中
-                        mDBOpenHelper.add(username, password);
+
+//                        mDBOpenHelper.add(username, password);
+                        ContentValues values = new ContentValues();
+                        values.put("name",username);
+                        values.put("password",password);
+                        db.insert("user_tb",null,values);
+
                         Intent intent2 = new Intent(this, MainActivity.class);
                         startActivity(intent2);
                         finish();
@@ -98,9 +107,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     } else {
                         Toast.makeText(this, "验证码错误,注册失败", Toast.LENGTH_SHORT).show();
                     }
+
                 }else {
                     Toast.makeText(this, "未完善信息，注册失败", Toast.LENGTH_SHORT).show();
                 }
+
                 break;
         }
     }
