@@ -391,11 +391,11 @@ public class ExpenseProcesActivity extends AppCompatActivity {
     private void saveInfo() {
         //Save之前先判断用户是否登录
         SharedPreferences sharedPreferences= getSharedPreferences("setting",Activity.MODE_PRIVATE);
-        String userID =sharedPreferences.getString("name", "");
+        String name =sharedPreferences.getString("name", "");
 
-        Log.i("info", "此次登录的用户是" + userID);
+        Log.i("info", "此次登录的用户是" + name);
 
-        if(userID.isEmpty()){
+        if(name.isEmpty()){
             new AlertDialog.Builder(this)
                     .setTitle("提示")
                     .setMessage("您还未登录，请点击确定按钮进行登录！")
@@ -424,7 +424,7 @@ public class ExpenseProcesActivity extends AppCompatActivity {
             SQLiteDatabase db = helper.getWritableDatabase();
             //插入数据
             ContentValues values= new ContentValues();
-            values.put("userID",userID);
+            values.put("name",name);
             values.put("Type",type);
             values.put("incomeWay",txtAccount);
             values.put("incomeBy",txtShop);
@@ -436,7 +436,7 @@ public class ExpenseProcesActivity extends AppCompatActivity {
             long rowid = db.insert("basicCode_tb",null,values);
 
             //Test
-            Cursor c = db.query("basicCode_tb",null,"userID=?",new String[]{userID},null,null,null);
+            Cursor c = db.query("basicCode_tb",null,"userID=?",new String[]{name},null,null,null);
             if(c!=null && c.getCount() >= 1){
                 String[] cols = c.getColumnNames();
                 while(c.moveToNext()){

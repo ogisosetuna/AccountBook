@@ -7,15 +7,6 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * @programName: pubFun.java
- * @programFunction: public function
- * @createDate: 2018/09/19
- * @author: AnneHan
- * @version:
- * xx.   yyyy/mm/dd   ver    author    comments
- * 01.   2018/09/19   1.00   AnneHan   New Create
- */
 public class pubFun {
     /**
      * check string is empty

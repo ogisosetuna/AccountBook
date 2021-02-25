@@ -6,82 +6,91 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<!--    <com.example.AccountBook.CircleMenuLayout-->
-<!--        android:id="@+id/id_menulayout"-->
+
+
+
+
+<!--    <Button-->
+<!--        android:id="@+id/sym_det"-->
 <!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:padding="100dp"-->
-<!--        android:background="@mipmap/circle_bg3">-->
-<!--        <RelativeLayout-->
-<!--            android:id="@id/id_circle_menu_item_center"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            >-->
-
-<!--            <ImageView-->
-<!--                android:layout_width="104.0dip"-->
-<!--                android:layout_height="104.0dip"-->
-<!--                android:layout_centerInParent="true"-->
-<!--                android:background="@mipmap/turnplate_center_unlogin"-->
-<!--                />-->
-
-<!--            <ImageView-->
-<!--                android:layout_width="116.0dip"-->
-<!--                android:layout_height="116.0dip"-->
-<!--                android:layout_centerInParent="true"-->
-<!--                android:background="@mipmap/turnplate_mask_unlogin_normal"-->
-<!--                />-->
-<!--        </RelativeLayout>-->
-<!--    </com.example.AccountBook.CircleMenuLayout>-->
-<!--    <TextView-->
-<!--        android:id="@+id/tv_main_hello"-->
-<!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
-<!--        android:text="Hello World!"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        android:text="明细"-->
+<!--        android:textColor="@color/colorAccent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <Button
-        android:id="@+id/sym_det"
+<!--    <Button-->
+<!--        android:id="@+id/bt_main_logout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="退出登录"-->
+<!--        android:textColor="@color/colorAccent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/bt_in_out"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="收入支出"-->
+<!--        android:textColor="@color/colorAccent"-->
+
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/sym_det" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/bt_count"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="统计"-->
+<!--        android:textColor="@color/colorAccent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/bt_in_out" />-->
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="明细"
-        android:textColor="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:background="@mipmap/bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/bt_main_logout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="退出登录"
-        android:textColor="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <com.example.AccountBook.CircleMenuLayout
 
-    <Button
-        android:id="@+id/bt_in_out"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="收入支出"
-        android:textColor="@color/colorAccent"
+            android:id="@+id/id_menulayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="100dp"
+            android:background="@mipmap/circle_bg3"
+            >
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sym_det" />
+            <RelativeLayout
+                android:id="@id/id_circle_menu_item_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
 
-    <Button
-        android:id="@+id/bt_count"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="统计"
-        android:textColor="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_in_out" />
+                <ImageView
+                    android:layout_width="104.0dip"
+                    android:layout_height="104.0dip"
+                    android:layout_centerInParent="true"
+                    android:background="@mipmap/turnplate_center_unlogin"
+                    />
 
+                <ImageView
+                    android:layout_width="116.0dip"
+                    android:layout_height="116.0dip"
+                    android:layout_centerInParent="true"
+                    android:background="@mipmap/turnplate_mask_unlogin_normal"
+                    />
+            </RelativeLayout>
+
+        </com.example.AccountBook.CircleMenuLayout>
+
+
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

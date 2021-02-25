@@ -16,68 +16,20 @@ import android.widget.TextView;
 public class CircleMenuLayout extends ViewGroup
 {
     private int mRadius;
-    /**
-     * 该容器内child item的默认尺寸
-     */
-    private static final float RADIO_DEFAULT_CHILD_DIMENSION = 1 / 4f;
-    /**
-     * 菜单的中心child的默认尺寸
-     */
-    private float RADIO_DEFAULT_CENTERITEM_DIMENSION = 1 / 3f;
-    /**
-     * 该容器的内边距,无视padding属性，如需边距请用该变量
-     */
-    private static final float RADIO_PADDING_LAYOUT = 1 / 12f;
-
-    /**
-     * 当每秒移动角度达到该值时，认为是快速移动
-     */
-    private static final int FLINGABLE_VALUE = 300;
-
-    /**
-     * 如果移动角度达到该值，则屏蔽点击
-     */
-    private static final int NOCLICK_VALUE = 3;
-
-    /**
-     * 当每秒移动角度达到该值时，认为是快速移动
-     */
-    private int mFlingableValue = FLINGABLE_VALUE;
-    /**
-     * 该容器的内边距,无视padding属性，如需边距请用该变量
-     */
-    private float mPadding;
-    /**
-     * 布局时的开始角度
-     */
-    private double mStartAngle = 0;
-    /**
-     * 菜单项的文本
-     */
-    private String[] mItemTexts;
-    /**
-     * 菜单项的图标
-     */
-    private int[] mItemImgs;
-
-    /**
-     * 菜单的个数
-     */
-    private int mMenuItemCount;
-
-    /**
-     * 检测按下到抬起时旋转的角度
-     */
-    private float mTmpAngle;
-    /**
-     * 检测按下到抬起时使用的时间
-     */
-    private long mDownTime;
-
-    /**
-     * 判断是否正在自动滚动
-     */
-    private boolean isFling;
+    private static final float RADIO_DEFAULT_CHILD_DIMENSION = 1 / 4f;  //该容器内child item的默认尺寸
+    private float RADIO_DEFAULT_CENTERITEM_DIMENSION = 1 / 3f;  //菜单的中心child的默认尺寸
+    private static final float RADIO_PADDING_LAYOUT = 1 / 12f;  //该容器的内边距,无视padding属性，如需边距请用该变量
+    private static final int FLINGABLE_VALUE = 300; //当每秒移动角度达到该值时，认为是快速移动
+    private int mFlingableValue = FLINGABLE_VALUE;  //当每秒移动角度达到该值时，认为是快速移动
+    private static final int NOCLICK_VALUE = 3; //如果移动角度达到该值，则屏蔽点击
+    private float mPadding; //该容器的内边距,无视padding属性，如需边距请用该变量
+    private double mStartAngle = 0; //布局时的开始角度
+    private String[] mItemTexts;    //菜单项的文本
+    private int[] mItemImgs;    //菜单项的图标
+    private int mMenuItemCount; //菜单的个数
+    private float mTmpAngle;    //检测按下到抬起时旋转的角度
+    private long mDownTime; //检测按下到抬起时使用的时间
+    private boolean isFling; //判断是否正在自动滚动
 
     private int mMenuItemLayoutId = R.layout.circle_menu_item;
 
@@ -169,35 +121,6 @@ public class CircleMenuLayout extends ViewGroup
     }
 
     /**
-     * MenuItem的点击事件接口
-     *
-     * @author zhy
-     *
-     */
-    public interface OnMenuItemClickListener
-    {
-        void itemClick(View view, int pos);
-
-        void itemCenterClick(View view);
-    }
-
-    /**
-     * MenuItem的点击事件接口
-     */
-    private OnMenuItemClickListener mOnMenuItemClickListener;
-
-    /**
-     * 设置MenuItem的点击事件接口
-     *
-     * @param mOnMenuItemClickListener
-     */
-    public void setOnMenuItemClickListener(
-            OnMenuItemClickListener mOnMenuItemClickListener)
-    {
-        this.mOnMenuItemClickListener = mOnMenuItemClickListener;
-    }
-
-    /**
      * 设置menu item的位置
      */
     @Override
@@ -234,16 +157,12 @@ public class CircleMenuLayout extends ViewGroup
             float tmp = layoutRadius / 2f - cWidth / 2 - mPadding;
 
             // tmp cosa 即menu item中心点的横坐标
-            left = layoutRadius
-                    / 2
-                    + (int) Math.round(tmp
-                    * Math.cos(Math.toRadians(mStartAngle)) - 1 / 2f
+            left = layoutRadius / 2
+                    + (int) Math.round(tmp * Math.cos(Math.toRadians(mStartAngle)) - 1 / 2f
                     * cWidth);
             // tmp sina 即menu item的纵坐标
-            top = layoutRadius
-                    / 2
-                    + (int) Math.round(tmp
-                    * Math.sin(Math.toRadians(mStartAngle)) - 1 / 2f
+            top = layoutRadius / 2
+                    + (int) Math.round(tmp * Math.sin(Math.toRadians(mStartAngle)) - 1 / 2f
                     * cWidth);
 
             child.layout(left, top, left + cWidth, top + cWidth);
@@ -373,6 +292,38 @@ public class CircleMenuLayout extends ViewGroup
     }
 
     /**
+     * MenuItem的点击事件接口
+     *
+     * @author zhy
+     *
+     */
+    public interface OnMenuItemClickListener
+    {
+        void itemClick(View view, int pos);
+
+        void itemCenterClick(View view);
+    }
+
+    /**
+     * MenuItem的点击事件接口
+     */
+    private OnMenuItemClickListener mOnMenuItemClickListener;
+
+    /**
+     * 设置MenuItem的点击事件接口
+     *
+     * @param mOnMenuItemClickListener
+     */
+    public void setOnMenuItemClickListener(
+            OnMenuItemClickListener mOnMenuItemClickListener)
+    {
+        this.mOnMenuItemClickListener = mOnMenuItemClickListener;
+    }
+
+
+
+
+    /**
      * 主要为了action_down时，返回true
      */
     @Override
@@ -417,6 +368,16 @@ public class CircleMenuLayout extends ViewGroup
     }
 
     /**
+     * 设置MenuItem的布局文件，必须在setMenuItemIconsAndTexts之前调用
+     *
+     * @param mMenuItemLayoutId
+     */
+    public void setMenuItemLayoutId(int mMenuItemLayoutId)
+    {
+        this.mMenuItemLayoutId = mMenuItemLayoutId;
+    }
+
+    /**
      * 设置菜单条目的图标和文本
      *
      * @param resIds
@@ -442,16 +403,6 @@ public class CircleMenuLayout extends ViewGroup
 
         addMenuItems();
 
-    }
-
-    /**
-     * 设置MenuItem的布局文件，必须在setMenuItemIconsAndTexts之前调用
-     *
-     * @param mMenuItemLayoutId
-     */
-    public void setMenuItemLayoutId(int mMenuItemLayoutId)
-    {
-        this.mMenuItemLayoutId = mMenuItemLayoutId;
     }
 
     /**
@@ -485,7 +436,7 @@ public class CircleMenuLayout extends ViewGroup
 
                         if (mOnMenuItemClickListener != null)
                         {
-                            mOnMenuItemClickListener.itemClick(v, j);
+                            mOnMenuItemClickListener.itemClick(v, 1);
                         }
                     }
                 });

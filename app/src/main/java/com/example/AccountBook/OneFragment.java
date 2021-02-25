@@ -38,19 +38,6 @@ public class OneFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_one, container, false);
 
-//        写死的数据，用于测试
-//        int[] image_expense = new int[]{R.mipmap.detail_income, R.mipmap.detail_payout };
-//        String[] expense_category = new String[] {"发工资", "买衣服"};
-//        String[] expense_money = new String[] {"30000.00", "1500.00"};
-//
-//        for (int i = 0; i < image_expense.length; i++)
-//        {
-//            Map<String, Object> map = new HashMap<String, Object>();
-//            map.put("image_expense", image_expense[i]);
-//            map.put("expense_category", expense_category[i]);
-//            map.put("expense_money", expense_money[i]);
-//            listitem.add(map);
-//        }
         getData();
 
         SimpleAdapter adapter = new SimpleAdapter(getActivity()

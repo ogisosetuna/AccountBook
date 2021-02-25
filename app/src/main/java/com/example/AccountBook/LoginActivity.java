@@ -177,20 +177,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
     @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {
-        switch (keyCode) {
-            case KeyEvent.KEYCODE_BACK://点击返回键
-                long secondTime = System.currentTimeMillis();//以毫秒为单位
-                if (secondTime - firstTime > 2000) {
-                    Toast.makeText(this, "再按一次返回退出程序", Toast.LENGTH_SHORT).show();
-                    firstTime = secondTime;
-                } else {
-                    finish();
-                    System.exit(0);
-                }
-                return true;
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode== KeyEvent.KEYCODE_BACK) {//返回键
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            this.finish();
         }
-        return super.onKeyUp(keyCode, event);
+        return super.onKeyDown(keyCode, event);
     }
 
     }

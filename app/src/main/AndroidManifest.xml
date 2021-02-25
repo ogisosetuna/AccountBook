@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.AccountBook.LoginActivity">
+        <activity android:name="com.example.AccountBook.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,12 +17,15 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.AccountBook.RegisterActivity"></activity>
-        <activity android:name="com.example.AccountBook.MainActivity"></activity>
+        <activity android:name="com.example.AccountBook.LoginActivity"></activity>
         <activity android:name=".CountActivity"></activity>
         <activity android:name=".ExpenseProcesActivity"></activity>
         <activity android:name=".SpendingActivity"></activity>
         <activity android:name=".Detail"></activity>
         <activity android:name=".KeyPad"></activity>
+        <activity android:name=".AboutusActivity"></activity>
+        <activity android:name=".SettingActivity"></activity>
+        <activity android:name=".WishActivity"></activity>
 
     </application>
 
