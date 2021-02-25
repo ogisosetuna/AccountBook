@@ -100,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         values.put("password",password);
                         db.insert("user_tb",null,values);
 
-                        Intent intent2 = new Intent(this, MainActivity.class);
+                        Intent intent2 = new Intent(this, LoginActivity.class);
                         startActivity(intent2);
                         finish();
                         Toast.makeText(this,  "验证通过，注册成功", Toast.LENGTH_SHORT).show();

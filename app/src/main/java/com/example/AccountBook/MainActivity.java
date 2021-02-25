@@ -29,9 +29,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // 初始化控件对象
         Button mBtMainLogout = findViewById(R.id.bt_main_logout);
         Button mBtMainDetail = findViewById(R.id.sym_det);
+        Button mBtMaininout = findViewById(R.id.bt_in_out);
+        Button mBtMaincount = findViewById(R.id.bt_count);
         // 绑定点击监听器
         mBtMainLogout.setOnClickListener(this);
         mBtMainDetail.setOnClickListener(this);
+        mBtMaininout.setOnClickListener(this);
+        mBtMaincount.setOnClickListener(this);
     }
 
     public void onClick(View view) {
@@ -45,5 +49,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent1);
             finish();
         }
+        if (view.getId() == R.id.bt_in_out){
+            Intent intent2 = new Intent(this, SpendingActivity.class);
+            startActivity(intent2);
+            finish();
+        }
+        if (view.getId() == R.id.bt_count){
+            Intent intent3 = new Intent(this, CountActivity.class);
+            startActivity(intent3);
+            finish();
+        }
+
     }
 }

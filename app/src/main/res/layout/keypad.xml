@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/keypad_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#ff838d99"
+        android:orientation="vertical"
+        android:paddingLeft="6.0dip"
+        android:paddingTop="10.0dip"
+        android:paddingRight="6.0dip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    <Button
+        android:id="@+id/display"
+        style="@style/widget_keypad_decimal_display_hdip"
+        android:layout_width="fill_parent"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="24.0dip"
+        android:layout_marginBottom="20.0dip"
+        android:layout_weight="1.0"
+        android:orientation="vertical">
+
+        <LinearLayout style="@style/widget_keypad_row_ly_hdip">
+
+            <Button
+                android:id="@+id/one"
+                style="@style/widget_keypad_digit_hdip"
+                android:layout_weight="3"
+                android:text="1" />
+
+            <Button
+                android:id="@+id/two"
+                style="@style/widget_keypad_digit_hdip"
+                android:layout_weight="3"
+                android:text="2" />
+
+            <Button
+                android:id="@+id/three"
+                style="@style/widget_keypad_digit_hdip"
+                android:layout_weight="3"
+                android:text="3" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/widget_keypad_row_ly_hdip">
+
+            <Button
+                android:id="@+id/four"
+                style="@style/widget_keypad_digit_hdip"
+                android:layout_weight="3"
+                android:text="4" />
+
+            <Button
+                android:id="@+id/five"
+                style="@style/widget_keypad_digit_hdip"
+                android:layout_weight="3"
+                android:text="5" />
+
+            <Button
+                android:id="@+id/six"
+                style="@style/widget_keypad_digit_hdip"
+                android:layout_weight="3"
+                android:text="6" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/widget_keypad_row_ly_hdip">
+
+            <Button
+                android:id="@+id/seven"
+                style="@style/widget_keypad_digit_hdip"
+                android:layout_weight="3"
+                android:text="7" />
+
+            <Button
+                android:id="@+id/eight"
+                style="@style/widget_keypad_digit_hdip"
+                android:layout_weight="3"
+                android:text="8" />
+
+            <Button
+                android:id="@+id/nine"
+                style="@style/widget_keypad_digit_hdip"
+                android:layout_weight="3"
+                android:text="9" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/widget_keypad_row_ly_hdip">
+
+            <Button
+                android:id="@+id/dot"
+                style="@style/widget_keypad_digit_hdip"
+                android:layout_weight="3"
+                android:text="." />
+
+            <Button
+                android:id="@+id/zero"
+                style="@style/widget_keypad_digit_hdip"
+                android:layout_weight="3"
+                android:text="0" />
+
+            <Button
+                android:id="@+id/delete"
+                style="@style/widget_keypad_delete_hdip"
+                android:layout_weight="3" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/widget_keypad_row_ly_hdip">
+
+            <Button
+                android:id="@+id/cancel"
+                style="@style/widget_keypad_cancel_hdip"
+                android:layout_weight="3" />
+
+            <Button
+                android:id="@+id/clean"
+                style="@style/widget_keypad_clean_hdip"
+                android:layout_weight="3" />
+
+            <Button
+                android:id="@+id/done"
+                style="@style/widget_keypad_done_hdip"
+                android:layout_weight="3" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,15 +13,6 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * @programName: CircleMenuLayout.java
- * @programFunction:
- * @createDate: 2018/09/19
- * @author: AnneHan
- * @version:
- * xx.   yyyy/mm/dd   ver    author    comments
- * 01.   2018/09/19   1.00   AnneHan   New Create
- */
 public class CircleMenuLayout extends ViewGroup
 {
     private int mRadius;

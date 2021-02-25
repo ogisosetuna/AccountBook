@@ -18,7 +18,11 @@
         </activity>
         <activity android:name="com.example.AccountBook.RegisterActivity"></activity>
         <activity android:name="com.example.AccountBook.MainActivity"></activity>
+        <activity android:name=".CountActivity"></activity>
+        <activity android:name=".ExpenseProcesActivity"></activity>
+        <activity android:name=".SpendingActivity"></activity>
         <activity android:name=".Detail"></activity>
+        <activity android:name=".KeyPad"></activity>
 
     </application>
 
