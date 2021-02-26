@@ -11,7 +11,7 @@
 
 <img src="https://github.com/ogisosetuna/AccountBook/blob/master/IMG/login.jpg" width="200" height="400" alt="login"/><br/>
 
-<img src="https://github.com/ogisosetuna/AccountBook/blob/master/IMG/detail.jpg" width="200" height="400" alt="detail"/><br/>
+<img src="https://github.com/ogisosetuna/AccountBook/blob/master/IMG/count.jpg" width="200" height="400" alt="count"/><br/>
 
 
 
