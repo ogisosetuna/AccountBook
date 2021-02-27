@@ -1,15 +1,17 @@
 # AccountBook
-用Android实现登录、注册、数据库操作
 
-update detail function
+1.register and login
+2.add spending data
+3.Count
+4.Sector Graph
+
+<img src="https://github.com/ogisosetuna/AccountBook/blob/master/IMG/menu.png" width="200" height="400" alt="menu"/><br/>
 
 <img src="https://github.com/ogisosetuna/AccountBook/blob/master/IMG/showdetail.jpg" width="200" height="400" alt="detail"/><br/>
 
-<img src="https://github.com/ogisosetuna/AccountBook/blob/master/IMG/login.jpg" width="200" height="400" alt="登录"/><br/>
+<img src="https://github.com/ogisosetuna/AccountBook/blob/master/IMG/login.jpg" width="200" height="400" alt="login"/><br/>
 
-接下来准备实现一个记账本功能
-
-<img src="https://github.com/ogisosetuna/AccountBook/blob/master/IMG/detail.jpg" width="200" height="400" alt="detail"/><br/>
+<img src="https://github.com/ogisosetuna/AccountBook/blob/master/IMG/Count.jpg" width="200" height="400" alt="count"/><br/>
 
 
 
