@@ -25,7 +25,7 @@ public class PieView extends View {
     //空洞的颜色
     private int holeColor = Color.WHITE;
     //饼图中间的空洞占据的比例
-    private float holeRadiusProportion = 59;
+    private float holeRadiusProportion = 40;
     //饼图初始绘制角度
     private float startAngle = -90;
     //延长点和饼图边缘的间距
@@ -115,7 +115,7 @@ public class PieView extends View {
         }
         //饼图所在的区域为正方形，处于长方形空间的中心
         //空间的高度减去上下两部分文字显示需要的高度，除以2即为饼图的半径
-        mRadius = shortSideLength / 2 - lineHeight - textHeight;
+        mRadius = shortSideLength / 2 - lineHeight - textHeight - 50;
         //设置RectF的坐标
         mRectF = new RectF(-mRadius, -mRadius, mRadius, mRadius);
     }
@@ -162,14 +162,12 @@ public class PieView extends View {
 
     //延长线分为 延长点、同心圆环和线三个部分
     private void drawLineAndText(Canvas canvas) {
-
         //算出延长线转折点相对起点的正余弦值
         double offsetRadians = Math.atan(yOffset / xOffset);
         float cosOffset = (float) Math.cos(offsetRadians);
         float sinOffset = (float) Math.sin(offsetRadians);
 
         for (PieEntry pie : mPieLists) {
-
             //延长点的位置处于扇形的中间
             float halfAngle = pie.getCurrentStartAngle() + pie.getSweepAngle() / 2;
             float cos = (float) Math.cos(Math.toRadians(halfAngle));
@@ -195,11 +193,9 @@ public class PieView extends View {
             float yLineTurningPoint = 0;
             float xLineEndPoint = 0;
             float yLineEndPoint = 0;
-
+            //创建要显示的文本
             String text = pie.getLabel() + " " +
                     new DecimalFormat("#.#").format(pie.getPercentage()) + "%";
-
-
             //延长点、起点、转折点在同一条线上
             //不同象限转折的方向不同
             float cosLength = bigCircleRadius * cosOffset;
@@ -252,6 +248,7 @@ public class PieView extends View {
             canvas.drawLine(xLineTurningPoint, yLineTurningPoint, xLineEndPoint, yLineEndPoint, mPaint);
         }
     }
+
 
 
     //初始化画笔

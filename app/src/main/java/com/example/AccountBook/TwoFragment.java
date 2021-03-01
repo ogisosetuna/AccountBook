@@ -16,13 +16,17 @@ public class TwoFragment extends Fragment {
     private TextView tvAdd;
     private TextView tvReduce;
 
+    public TwoFragment() {
+        // Required empty public constructor
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstancesState){
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_two, container,false);
         mPieView = v.findViewById(R.id.pieView);
         initPieView();
-        initAddAndReduce();
+//        initAddAndReduce();
         return v;
     }
 
@@ -33,10 +37,10 @@ public class TwoFragment extends Fragment {
 
     private ArrayList<PieEntry> createData() {
         ArrayList<PieEntry> pieLists = new ArrayList<>();
-        pieLists.add(new PieEntry(20.00F, "服装"));
-        pieLists.add(new PieEntry(20.00F, "数码产品"));
-        pieLists.add(new PieEntry(20.00F, "保健品"));
-        pieLists.add(new PieEntry(20.00F, "户外运动用品"));
+        pieLists.add(new PieEntry(30.00F, "娱乐"));
+        pieLists.add(new PieEntry(30.00F, "生活"));
+        pieLists.add(new PieEntry(20.00F, "必需"));
+//        pieLists.add(new PieEntry(20.00F, "用品"));
         pieLists.add(new PieEntry(20.00F, "其他"));
         return pieLists;
     }
@@ -46,29 +50,29 @@ public class TwoFragment extends Fragment {
         colorLists.add(Color.parseColor("#EBBF03"));
         colorLists.add(Color.parseColor("#ff4d4d"));
         colorLists.add(Color.parseColor("#8d5ff5"));
-        colorLists.add(Color.parseColor("#41D230"));
+//        colorLists.add(Color.parseColor("#41D230"));
         colorLists.add(Color.parseColor("#4FAAFF"));
         return colorLists;
     }
 
-    private void initAddAndReduce() {
-        tvAdd = tvAdd.findViewById(R.id.tv_add);
-        tvReduce = tvReduce.findViewById(R.id.tv_reduce);
-        tvAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ViewGroup.LayoutParams layoutParams = mPieView.getLayoutParams();
-                layoutParams.height = mPieView.getMeasuredHeight() + 10;
-                mPieView.setLayoutParams(layoutParams);
-            }
-        });
-        tvReduce.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ViewGroup.LayoutParams layoutParams = mPieView.getLayoutParams();
-                layoutParams.height = mPieView.getMeasuredHeight() - 10;
-                mPieView.setLayoutParams(layoutParams);
-            }
-        });
-    }
+//    private void initAddAndReduce() {
+//        tvAdd = tvAdd.findViewById(R.id.tv_add);
+//        tvReduce = tvReduce.findViewById(R.id.tv_reduce);
+//        tvAdd.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ViewGroup.LayoutParams layoutParams = mPieView.getLayoutParams();
+//                layoutParams.height = mPieView.getMeasuredHeight() + 10;
+//                mPieView.setLayoutParams(layoutParams);
+//            }
+//        });
+//        tvReduce.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                ViewGroup.LayoutParams layoutParams = mPieView.getLayoutParams();
+//                layoutParams.height = mPieView.getMeasuredHeight() - 10;
+//                mPieView.setLayoutParams(layoutParams);
+//            }
+//        });
+//    }
 }
