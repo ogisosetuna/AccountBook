@@ -7,11 +7,15 @@
 
 <img src="https://github.com/ogisosetuna/AccountBook/blob/master/IMG/menu.png" width="200" height="400" alt="menu"/><br/>
 
-<img src="https://github.com/ogisosetuna/AccountBook/blob/master/IMG/showdetail.jpg" width="200" height="400" alt="detail"/><br/>
 
 <img src="https://github.com/ogisosetuna/AccountBook/blob/master/IMG/login.jpg" width="200" height="400" alt="login"/><br/>
 
+
 <img src="https://github.com/ogisosetuna/AccountBook/blob/master/IMG/Count.jpg" width="200" height="400" alt="count"/><br/>
+
+
+<img src="https://github.com/ogisosetuna/AccountBook/blob/master/IMG/graph.jpg" width="200" height="400" alt="graph"/><br/>
+
 
 
 
